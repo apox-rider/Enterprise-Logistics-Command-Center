@@ -16,7 +16,7 @@ export const ShipmentTable:React.FC<ShipmentTableProps>=({shipments,onSelectShip
         switch(status){
             case 'Critical':
                 return(
-                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-sm  bg-red-500/10 ${isLight?'text-red-700 font-semibold':'text-red-500'} border border-red-500/20 `}>
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-sm  bg-red-500/10 ${isLight?'text-red-700 font-semibold':'text-red-400'} border border-red-500/20 `}>
                         <AlertCircle className="w-4 h-4 animate-pulse"/> <p>Critical</p>
                     </span>
                 );
