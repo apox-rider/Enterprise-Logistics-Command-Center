@@ -31,10 +31,10 @@ export default function App() {
     setTheme(prev=>prev ==='light'?'dark':'light')
   }
   return (
-    <div className="w-full max-w-full overflow-x-hidden">
-      <Header/>
+    <div className={`w-full max-w-full overflow-x-hidden ${theme==='light'?'bg-white':'bg-blue-950'} min-h-screen`}>
+      <Header theme={theme} onchangeTheme={toggleTheme}/>
       <main>  
-          <KpiGrid shipments={shipments}/>
+          <KpiGrid shipments={shipments} theme={theme} />
 
           <FilterToolBar
           searchQuery={searchQuery}
@@ -44,11 +44,14 @@ export default function App() {
           selectedCargo={selectedCargo}
           setSelectedCargo={setSelectedCargo}
           totalResults={filteredShipments.length}
+          theme={theme}
           />
 
           <ShipmentTable
           shipments={filteredShipments}
           onSelectShipment={(s)=>console.log('Selected shipment: ',s.id)}
+          theme={theme} 
+
           />
       </main>
     </div>

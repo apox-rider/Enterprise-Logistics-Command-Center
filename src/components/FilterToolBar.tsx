@@ -9,21 +9,23 @@ interface FilterToolBarProps{
     selectedCargo:string;
     setSelectedCargo:(cargo:string)=>void;
     totalResults:number;
+    theme:'light'|'dark'
 }
 
 export const FilterToolBar:React.FC<FilterToolBarProps>=({
-    searchQuery,setSearchQuery,selectedStatus,setSelectedStatus,selectedCargo,setSelectedCargo,totalResults
+    searchQuery,setSearchQuery,selectedStatus,setSelectedStatus,selectedCargo,setSelectedCargo,totalResults,theme
 })=>{
+    const isLight=theme==='light'
     return(
-        <div className="flex flex-col md:flex-row mt-5 ">
-            <div className="flex relative border border-black/10 p-0.5 rounded-2xl w-full md:w-96">
-                <Search width={25} height={25} className="border absolute left-0.5 top-1/2 -translate-y-1/2  border-black/20 p-0.5 rounded-full"/>
+        <div className={`m-0.5 flex flex-col md:flex-row mt-5 mb-5  md:h-10 ${isLight?'text-black':'text-white'}`}>
+            <div className={`flex relative border ${isLight?'border-black/10':'border-white'} p-0.5 h-10 rounded-2xl w-full md:w-96`}>
+                <Search width={25} height={25} className={`border absolute left-0.5 top-1/2 -translate-y-1/2  ${isLight?"border-black/20":"border-white"} p-0.5 rounded-full`}/>
                 <input
-                type="text"
-                value={searchQuery}
-                onChange={(e)=>setSearchQuery(e.target.value)}
-                className="w-full border border-black/60 rounded-full ml-7 px-3"
-                placeholder="Search Driver Name or tracking ID..."
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e)=>setSearchQuery(e.target.value)}
+                    className="w-full border border-black/20 rounded-full ml-7 px-3 bg-white text-black"
+                    placeholder="Search Driver Name or tracking ID..."
                 />
             </div>
 
