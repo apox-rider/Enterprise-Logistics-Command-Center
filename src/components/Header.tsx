@@ -13,7 +13,7 @@ export const Header:React.FC<HeaderProps>=({theme,onchangeTheme})=>{
             <div className={`flex flex-col  transition-colors md:flex-row w-full justify-between px-5 gap-4  py-2 `}>
                 <div className="flex items-center justify-center w-auto gap-3">
                     <div className="flex flex-col w-full items-center md:items-start justify-center md:justify-baseline tracking-widest md:tracking-normal">
-                        <h1 className="font-black">KIBO LOGISTICS CONTROL</h1>
+                        <h1 className="font-black">KIBO LOGISTICS CONTROL </h1>
                         <p className="font-light ">Fleet Tracking Manager</p>
                     </div>
                 </div>
