@@ -81,8 +81,8 @@ export const ShipmentTable:React.FC<ShipmentTableProps>=({shipments,onSelectShip
                                 </td>
                                 <td className="flex relative items-center w-full px-4 justify-between">
                                     <p className="md:w-1/3">{shipment.origin}</p>
-                                    <ArrowRight className="md:w-1/3" width={20} height={20}/>
-                                    <p className="md:w-1/3">{shipment.destination}</p>
+                                    <ArrowRight width={20} height={20}/>
+                                    <p >{shipment.destination}</p>
                                 </td>
                                 <td className="px-4">
                                     {shipment.cargoType}
