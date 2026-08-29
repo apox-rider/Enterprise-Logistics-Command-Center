@@ -1,5 +1,4 @@
-import { useMemo, useState } from "react";
-import { generateMockShipment } from "./data/mockShipment"
+import { useMemo } from "react";
 import { useDebounce } from "./hooks/useDebounce";
 import { FilterToolBar } from "./components/FilterToolBar";
 import { ShipmentTable } from "./components/ShipmentTable";
@@ -7,16 +6,11 @@ import { KpiGrid } from "./components/KpiGrid";
 import { Header } from "./components/Header";
 import { ShipmentDetail } from "./components/ShipmentDetail";
 import { NetworkBanner } from "./components/NetworkBanner";
-import {type Shipment, type ShipmentStatus } from "./types/shipment";
+import { useFleetStore } from "./store/useFleetStore";
 
 export default function App() {
-  const [shipments,setShipments]=useState(()=>generateMockShipment(1500));
-  const [theme,setTheme]=useState<'light'|'dark'>('light')
 
-  const [searchQuery,setSearchQuery]=useState('')
-  const [selectedStatus,setSelectedStatus]=useState('ALL');
-  const [selectedCargo,setSelectedCargo]=useState('ALL');
-  const [selectedShipment, setSelectedShipment]=useState<Shipment|null>(null)
+  const {searchQuery,shipments,theme,selectedCargo,selectedStatus,selectedShipment,toggleTheme,setSearchQuery,setSelectedCargo,setSelectedShipment,updateShipmentStatus,setSelectedStatus } =useFleetStore()
 
   const debouncedSearch=useDebounce(searchQuery,300);
 
@@ -30,19 +24,7 @@ export default function App() {
         return matchSearch && matchStatus && matchCargo
     });
   },[shipments,debouncedSearch,selectedStatus,selectedCargo])
-
-  const toggleTheme=()=>{
-    setTheme(prev=>prev ==='light'?'dark':'light')
-  }
-
-  const handleUpdateStatus = (shipmentId: string, newStatus: ShipmentStatus) => {
-      setShipments(prev => 
-        prev.map(s => s.id === shipmentId ? { ...s, status: newStatus } : s)
-      );
-      setSelectedShipment(current => current ? { ...current, status: newStatus } : null);
-    };
-
-
+  
   return (
     <div className={`w-full max-w-full overflow-x-hidden ${theme==='light'?'bg-white':'bg-blue-950'} min-h-screen overflow-y-hidden`}>
       <NetworkBanner/>
@@ -71,7 +53,7 @@ export default function App() {
         <ShipmentDetail
         shipment={selectedShipment}
         onClose={()=>setSelectedShipment(null)}
-        onUpdateStatus={handleUpdateStatus}
+        onUpdateStatus={updateShipmentStatus}
         theme={theme} />
     </div>
   )
