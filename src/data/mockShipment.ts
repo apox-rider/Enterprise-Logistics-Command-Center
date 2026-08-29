@@ -44,8 +44,10 @@ export function generateMockShipment(count:number=1500):Shipment[]{
         const firstname= getRandomItem(firstNames);
         const lastName=getRandomItem(lastNames);
 
-        const driver={
-            id:`DRV-${1}`,
+
+
+        const driver: Driver={
+            id:`DRV-${getRandomNumber(100, 999)}`,
             name:`${firstname} ${lastName}`,
             phone:`+255 7${getRandomNumber(10,99)} ${getRandomNumber(100,999)} ${getRandomNumber(100,999)}`,
             assignedTruckId:trackingNumber,
@@ -97,3 +99,4 @@ export function generateMockAlerts(shipments:Shipment[]):AlertLog[]{
         resolved:false
     }))
 }
+
