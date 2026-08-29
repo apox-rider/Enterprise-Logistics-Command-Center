@@ -21,7 +21,7 @@ export const KpiGrid:React.FC<KpiGridProps>=({shipments,theme})=>{
     return(
         <Divide className={`border-none ${isLight?' bg-black/10':'bg-black/10 rounded-sm'}`}>
             <div className={`grid grid-cols-2   md:grid-cols-4 w-full  items-center justify-between pb-1 md:pb-0`}>
-                    <CompDiv className={`flex mx-1 items-center justify-center gap-2  p-1 rounded-sm ${isLight? ' bg-white':'bg-black/70 text-white'}`}>
+                    <CompDiv className={`flex mx-1 items-center justify-center gap-2  p-1 rounded-sm ${isLight? ' bg-white':'bg-slate-950/50 text-white'}`}>
                         <div>
                             <AlertTriangle className={`transition-colors ${isLight?'text-red-500':'text-red-300'}`} width={30} height={30}/> 
                         </div>
@@ -30,7 +30,7 @@ export const KpiGrid:React.FC<KpiGridProps>=({shipments,theme})=>{
                             <h3 className="font-black">{delayedCount+criticalCount} <span className="font-light pl-1">Need Action</span></h3>
                         </div>
                     </CompDiv>
-                    <CompDiv className={`flex mx-1 my-1 items-center justify-center gap-2  p-1 rounded-sm ${isLight? ' bg-white':'bg-black/70 text-white'}`}>
+                    <CompDiv className={`flex mx-1 my-1 items-center justify-center gap-2  p-1 rounded-sm ${isLight? ' bg-white':'bg-slate-950/50 text-white'}`}>
                         <div>
                             <Truck className={`transition-colors ${isLight?'text-blue-500':'text-blue-300'}`} width={30} height={30}/> 
                         </div>
@@ -39,7 +39,7 @@ export const KpiGrid:React.FC<KpiGridProps>=({shipments,theme})=>{
                             <h3 className="font-black">{activeCount}<span className="font-light pl-1">In route</span></h3>
                         </div>
                     </CompDiv>
-                    <CompDiv className={`flex mx-1 items-center justify-center gap-2  p-1 rounded-sm ${isLight? ' bg-white':'bg-black/70 text-white'}`}>
+                    <CompDiv className={`flex mx-1 items-center justify-center gap-2  p-1 rounded-sm ${isLight? ' bg-white':'bg-slate-950/50 text-white'}`}>
                         <div>
                             <CheckCircle2 className={`transition-colors ${isLight?'text-emerald-500':'text-emerald-300'}`} width={30} height={30}/> 
                         </div>
@@ -48,7 +48,7 @@ export const KpiGrid:React.FC<KpiGridProps>=({shipments,theme})=>{
                             <h3 className="font-black">{onTimeRate}%</h3>
                         </div>
                     </CompDiv>
-                    <CompDiv className={`flex mx-1 items-center justify-center gap-2  p-1 rounded-sm ${isLight? 'bg-white':'bg-black/70 text-white'}`}>
+                    <CompDiv className={`flex mx-1 items-center justify-center gap-2  p-1 rounded-sm ${isLight? 'bg-white':'bg-slate-950/50 text-white'}`}>
                         <div>
                             <Activity className={`transition-colors ${isLight?'text-black':'text-white'}`} width={30} height={30}/> 
                         </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Shipment, ShipmentStatus } from "../types/shipment";
-import { CheckCircle2, Phone, RefreshCw, ShieldAlert, X } from "lucide-react";
+import { CheckCircle2, Clock, MapPin, Phone, RefreshCw, ShieldAlert, X } from "lucide-react";
 import Divide from "./ui/Divide";
 import {motion,AnimatePresence} from 'framer-motion'
 
@@ -145,6 +145,45 @@ export const ShipmentDetail: React.FC<ShipmentDetailProps> = ({
                           </div>
                         </div>
                       </div>
+
+                      {shipment.checkpoints && shipment.checkpoints.length > 0 && (
+                          <div className={`p-4 rounded-xl border ${isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950/50 border-slate-800'}`}>
+                            <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Route Checkpoints</h3>
+                            <div className="space-y-3 relative before:absolute before:inset-0 before:left-3 before:w-0.5 before:bg-slate-700/30">
+                              {shipment.checkpoints.map((cp) => {
+                                const isPassed = cp.status === 'passed';
+                                const isCurrent = cp.status === 'current';
+                                
+                                return (
+                                  <div key={cp.id} className="flex items-start gap-3 relative text-xs">
+                                    <span className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 z-10  ${
+                                      isPassed ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30' :
+                                      isCurrent ? 'bg-blue-500/20 text-blue-400 border-blue-500 animate-pulse' :
+                                      isLight ? 'bg-white text-slate-400 border-slate-300' : 'bg-slate-800 text-slate-500 border-slate-600'
+                                    }`}>
+                                      {isPassed ? <CheckCircle2 className="w-3.5 h-3.5" /> : <MapPin className="w-3.5 h-3.5" />}
+                                    </span>
+                                    <div className="flex-1 flex justify-between items-center bg-slate-500/5 p-2 rounded-lg border border-slate-500/10">
+                                      <div>
+                                        <p className={`font-semibold ${isCurrent ? 'text-blue-400 font-bold' : ''}`}>{cp.name}</p>
+                                        <p className="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5">
+                                          <Clock className="w-3 h-3" /> {cp.time}
+                                        </p>
+                                      </div>
+                                      <span className={`px-2 py-0.5 rounded text-[10px] font-medium uppercase ${
+                                        isPassed ? 'text-emerald-500 bg-emerald-500/10' :
+                                        isCurrent ? 'text-blue-400 bg-blue-500/10' :
+                                        'text-slate-400 bg-slate-500/10'
+                                      }`}>
+                                        {cp.status}
+                                      </span>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
 
                       <div className={`p-4 rounded-xl border ${isLight? 'bg-slate-50 border-slate-200':'bg-slate-950/50 border-slate-800'}`}>
                         <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Dispatcher Status Override</h3>

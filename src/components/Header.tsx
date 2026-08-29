@@ -9,7 +9,7 @@ interface HeaderProps{
 export const Header:React.FC<HeaderProps>=({theme,onchangeTheme})=>{
     const isLight= theme==='light'
     return(
-        <Divide className={`border-none ${isLight?' bg-black/10':'bg-black/90 text-white'}`}>
+        <Divide className={`border-none ${isLight?' bg-black/10':'bg-slate-950/50 text-white'}`}>
             <div className={`flex flex-col  transition-colors md:flex-row w-full justify-between px-5 gap-4  py-2 `}>
                 <div className="flex items-center justify-center w-auto gap-3">
                     <div className="flex flex-col w-full items-center md:items-start justify-center md:justify-baseline tracking-widest md:tracking-normal">

@@ -59,7 +59,7 @@ export const ShipmentTable:React.FC<ShipmentTableProps>=({shipments,onSelectShip
   return (
     <Divide >
         <div className="overflow-x-auto w-full">
-            <table className={`w-full   whitespace-nowrap  ${isLight?'bg-white text-black':'bg-black text-white'} rounded-sm  p-2`}>
+            <table className={`w-full   whitespace-nowrap  ${isLight?'bg-white text-black':'bg-slate-950/50 text-white'} rounded-sm  p-2`}>
                 <thead className="border-b">
                     <tr className="text-lg font-semibold p-2  mx-1 uppercase tracking-wider text-left w-fit">
                         <th className="pl-2  px-4">Tracking ID</th>
